@@ -1149,14 +1149,14 @@
 <span class="sd">        updates</span>
 <span class="sd">            values to update input tensor with</span>
 <span class="sd">        shape</span>
-<span class="sd">            The shape of the result. Default is None, in which case tensor argument must be</span>
-<span class="sd">            provided.</span>
+<span class="sd">            The shape of the result. Default is None, in which case tensor argument </span>
+<span class="sd">            must be provided.</span>
 <span class="sd">        tensor</span>
-<span class="sd">            The tensor in which to scatter the results, default is None, in which case the</span>
-<span class="sd">            shape arg is used to</span>
-<span class="sd">            scatter into a zeros array.</span>
+<span class="sd">            The tensor in which to scatter the results, default is None, </span>
+<span class="sd">            in which case the shape arg is used to scatter into a zeros array.</span>
 <span class="sd">        reduction</span>
-<span class="sd">            The reduction method for the scatter, one of &#39;sum&#39;, &#39;min&#39;, &#39;max&#39; or &#39;replace&#39;</span>
+<span class="sd">            The reduction method for the scatter, one of &#39;sum&#39;, &#39;min&#39;, &#39;max&#39; </span>
+<span class="sd">            or &#39;replace&#39;</span>
 <span class="sd">        key_chains</span>
 <span class="sd">            The key-chains to apply or not apply the method to. Default is None.</span>
 <span class="sd">        to_apply</span>
@@ -1189,7 +1189,8 @@
 <span class="sd">        &gt;&gt; arr = ivy.Container(a=ivy.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),</span>
 <span class="sd">                                b = ivy.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))</span>
 
-<span class="sd">        z = ivy.Container.static_scatter_nd(indices, updates, tensor=arr, reduction=&#39;replace&#39;)</span>
+<span class="sd">        z = ivy.Container.static_scatter_nd(indices, updates, </span>
+<span class="sd">                                            tensor=arr, reduction=&#39;replace&#39;)</span>
 <span class="sd">        &gt;&gt; print(z)</span>
 <span class="sd">        {</span>
 <span class="sd">            a: ivy.array([1, 2, 3, 4, 5, 50, 60, 70, 9, 10]),</span>
@@ -1251,14 +1252,14 @@
 <span class="sd">        updates</span>
 <span class="sd">            values to update input tensor with</span>
 <span class="sd">        shape</span>
-<span class="sd">            The shape of the result. Default is None, in which case tensor argument must be</span>
-<span class="sd">            provided.</span>
+<span class="sd">            The shape of the result. Default is None, in which case tensor argument</span>
+<span class="sd">            must be provided.</span>
 <span class="sd">        tensor</span>
-<span class="sd">            The tensor in which to scatter the results, default is None, in which case the</span>
-<span class="sd">            shape arg is used to</span>
-<span class="sd">            scatter into a zeros array.</span>
+<span class="sd">            The tensor in which to scatter the results, default is None, </span>
+<span class="sd">            in which case the shape arg is used to scatter into a zeros array.</span>
 <span class="sd">        reduction</span>
-<span class="sd">            The reduction method for the scatter, one of &#39;sum&#39;, &#39;min&#39;, &#39;max&#39; or &#39;replace&#39;</span>
+<span class="sd">            The reduction method for the scatter, one of &#39;sum&#39;, &#39;min&#39;, &#39;max&#39; </span>
+<span class="sd">            or &#39;replace&#39;</span>
 <span class="sd">        key_chains</span>
 <span class="sd">            The key-chains to apply or not apply the method to. Default is None.</span>
 <span class="sd">        to_apply</span>
