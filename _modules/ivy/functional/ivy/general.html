@@ -3030,54 +3030,44 @@
 <span class="sd">    </span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    scatter values into a zeros array</span>
+<span class="sd">    scatter values into an empty array, With :code:`ivy.Array` input:</span>
 <span class="sd">    </span>
-<span class="sd">    &gt;&gt; indices = ivy.Array([4, 3, 1, 7])</span>
-<span class="sd">    &gt;&gt; updates = ivy.Array([9, 10, 11, 12])</span>
-<span class="sd">    &gt;&gt; shape = ivy.Array([8])</span>
+<span class="sd">    &gt;&gt; indices = ivy.array([[4], [3], [1], [7]])</span>
+<span class="sd">    &gt;&gt; updates = ivy.array([9, 10, 11, 12])</span>
+<span class="sd">    &gt;&gt; shape = ivy.array([8])</span>
 <span class="sd">    &gt;&gt; scatter = ivy.scatter_nd(indices, updates, shape)</span>
 <span class="sd">    &gt;&gt; print(scatter)</span>
-<span class="sd">    [0, 11, 0, 10, 9, 0, 0, 12]</span>
+<span class="sd">    ivy.array([ 0, 11,  0, 10,  9,  0,  0, 12])</span>
 
-<span class="sd">    scatter values into an array</span>
+<span class="sd">    scatter into an empty array, With: `ivy.Container` input:</span>
 
-<span class="sd">    &gt;&gt; arr = ivy.Array([1,2,3,4,5,6,7,8, 9, 10])</span>
-<span class="sd">    &gt;&gt; indices = ivy.Array([4, 3, 1, 7])</span>
-<span class="sd">    &gt;&gt; updates = ivy.Array([9, 10, 11, 12])</span>
-<span class="sd">    &gt;&gt; scatter = ivy.scatter_nd(indices, updates, arr)</span>
-<span class="sd">    &gt;&gt; print(scatter)</span>
-<span class="sd">    [1,11,3,10,9,6,7,12, 9, 10]</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    scatter into an empty array</span>
-<span class="sd">    &gt;&gt; indices = ivy.array([[4],[3],[6]])</span>
+<span class="sd">    &gt;&gt; indices = ivy.Container(a=ivy.array([[4],[3],[6]]),</span>
+<span class="sd">                        b=ivy.array([[5],[1],[2]]))</span>
 <span class="sd">    &gt;&gt; updates = ivy.Container(a=ivy.array([100, 200, 200]),</span>
-<span class="sd">                    b=ivy.array([20, 30, 40]))</span>
+<span class="sd">                        b=ivy.array([20, 30, 40]))</span>
 <span class="sd">    &gt;&gt; shape = ivy.Container(a=ivy.array([10]),</span>
-<span class="sd">                            b = ivy.array([10]))</span>
+<span class="sd">                        b = ivy.array([10]))</span>
 <span class="sd">    &gt;&gt; z = ivy.scatter_nd(indices, updates, shape=shape, reduction=&#39;replace&#39;)</span>
-<span class="sd">    print(z)</span>
+<span class="sd">    &gt;&gt; print(z)</span>
 <span class="sd">    {</span>
 <span class="sd">        a: ivy.array([0, 0, 0, 200, 100, 0, 200, 0, 0, 0]),</span>
-<span class="sd">        b: ivy.array([0, 0, 0, 30, 20, 0, 40, 0, 0, 0])</span>
+<span class="sd">        b: ivy.array([0, 30, 40, 0, 0, 20, 0, 0, 0, 0])</span>
 <span class="sd">    }</span>
 
-<span class="sd">    scatter into an array</span>
-<span class="sd">    &gt;&gt; indices = ivy.array([[4],[3],[6]])</span>
-<span class="sd">    &gt;&gt; updates = ivy.Container(a=ivy.array([100, 200, 200]),</span>
-<span class="sd">                    b=ivy.array([20, 30, 40]))</span>
+<span class="sd">    scatter into an array, With : `ivy.Container` and `ivy.Array` input:</span>
+
+<span class="sd">    &gt;&gt; indices = ivy.array([[4],[3],[1]])</span>
+<span class="sd">    &gt;&gt; updates = ivy.Container(a=ivy.array([10, 20, 30]),</span>
+<span class="sd">                    b=ivy.array([200, 300, 400]))</span>
 <span class="sd">    &gt;&gt; shape = ivy.array([10, 10])</span>
-<span class="sd">    &gt;&gt; arr = ivy.Container(a=ivy.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),</span>
-<span class="sd">                            b = ivy.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))</span>
+<span class="sd">    &gt;&gt; arr = ivy.Container(a=ivy.array([1, 2, 3, 4, 5]),</span>
+<span class="sd">                            b = ivy.array([10, 20, 30, 40, 50]))</span>
 <span class="sd">    &gt;&gt; z = ivy.scatter_nd(indices, updates, tensor=arr, reduction=&#39;replace&#39;)</span>
 <span class="sd">    &gt;&gt; print(z)</span>
 <span class="sd">    {</span>
-<span class="sd">        a: ivy.array([1, 2, 3, 200, 100, 6, 200, 8, 9, 10]),</span>
-<span class="sd">        b: ivy.array([1, 2, 3, 30, 20, 6, 40, 8, 9, 10])</span>
+<span class="sd">        a: ivy.array([1, 30, 3, 20, 10]),</span>
+<span class="sd">        b: ivy.array([10, 400, 30, 300, 200])</span>
 <span class="sd">    }</span>
-
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">current_backend</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span><span class="o">.</span><span class="n">scatter_nd</span><span class="p">(</span>
         <span class="n">indices</span><span class="p">,</span> <span class="n">updates</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span>

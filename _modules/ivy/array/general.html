@@ -360,7 +360,7 @@
 <span class="sd">        --------</span>
 <span class="sd">        scatter values into an array</span>
 
-<span class="sd">        &gt;&gt; arr = ivy.Array([1,2,3,4,5,6,7,8, 9, 10])</span>
+<span class="sd">        &gt;&gt; arr = ivy.array([1,2,3,4,5,6,7,8, 9, 10])</span>
 <span class="sd">        &gt;&gt; indices = ivy.array([[4], [3], [1], [7]])</span>
 <span class="sd">        &gt;&gt; updates = ivy.array([9, 10, 11, 12])</span>
 <span class="sd">        &gt;&gt; scatter = indices.scatter_nd(updates, tensor=arr, reduction=&#39;replace&#39;)</span>
@@ -369,12 +369,13 @@
 
 <span class="sd">        scatter values into an empty array</span>
 
-<span class="sd">        &gt;&gt; shape = ivy.array([8])</span>
-<span class="sd">        &gt;&gt; indices = ivy.array([[4], [3], [1], [7]])</span>
-<span class="sd">        &gt;&gt; updates = ivy.array([9, 10, 11, 12])</span>
+<span class="sd">        &gt;&gt; shape = ivy.array([2, 5])</span>
+<span class="sd">        &gt;&gt; indices = ivy.array([[1,4], [0,3], [1,1], [0,2]])</span>
+<span class="sd">        &gt;&gt; updates = ivy.array([25, 40, 21, 22])</span>
 <span class="sd">        &gt;&gt; scatter = indices.scatter_nd(updates, shape=shape)</span>
 <span class="sd">        &gt;&gt; print(scatter)</span>
-<span class="sd">        ivy.array([ 0, 11,  0, 10,  9,  0,  0, 12])</span>
+<span class="sd">        ivy.array([[ 0,  0, 22, 40,  0],</span>
+<span class="sd">                    [ 0, 21,  0,  0, 25]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">scatter_nd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">updates</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">reduction</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
     

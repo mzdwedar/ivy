@@ -535,19 +535,22 @@ or ‘replace’</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <p>scatter values into an array</p>
-<p>&gt;&gt; arr = ivy.Array([1,2,3,4,5,6,7,8, 9, 10])
+<p>&gt;&gt; arr = ivy.array([1,2,3,4,5,6,7,8, 9, 10])
 &gt;&gt; indices = ivy.array([[4], [3], [1], [7]])
 &gt;&gt; updates = ivy.array([9, 10, 11, 12])
 &gt;&gt; scatter = indices.scatter_nd(updates, tensor=arr, reduction=’replace’)
 &gt;&gt; print(scatter)
 ivy.array([ 1, 11,  3, 10,  9,  6,  7, 12,  9, 10])</p>
 <p>scatter values into an empty array</p>
-<p>&gt;&gt; shape = ivy.array([8])
-&gt;&gt; indices = ivy.array([[4], [3], [1], [7]])
-&gt;&gt; updates = ivy.array([9, 10, 11, 12])
+<p>&gt;&gt; shape = ivy.array([2, 5])
+&gt;&gt; indices = ivy.array([[1,4], [0,3], [1,1], [0,2]])
+&gt;&gt; updates = ivy.array([25, 40, 21, 22])
 &gt;&gt; scatter = indices.scatter_nd(updates, shape=shape)
 &gt;&gt; print(scatter)
-ivy.array([ 0, 11,  0, 10,  9,  0,  0, 12])</p>
+ivy.array([[ 0,  0, 22, 40,  0],</p>
+<blockquote>
+<div><p>[ 0, 21,  0,  0, 25]])</p>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
