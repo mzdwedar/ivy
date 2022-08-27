@@ -2241,6 +2241,26 @@
 <span class="sd">    ret</span>
 <span class="sd">        New array with einops.reduce having been applied.</span>
 
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With :code:`ivy.Array` input:</span>
+<span class="sd">    &gt;&gt; x = ivy.array([[-4.47, 0.93, -3.34],  </span>
+<span class="sd">                      [3.66, 24.29, 3.64]])</span>
+<span class="sd">    &gt;&gt; reduced = ivy.einops_reduce(x, &#39;a b -&gt; b&#39;, &#39;mean&#39;)</span>
+<span class="sd">    &gt;&gt; print(reduced)</span>
+<span class="sd">    ivy.array([-0.405, 12.6  ,  0.15 ])</span>
+
+<span class="sd">    With :code:`ivy.Container` input:</span>
+<span class="sd">    &gt;&gt; x = ivy.Container(a=ivy.array([[-4.47, 0.93, -3.34],  </span>
+<span class="sd">                                      [3.66, 24.29, 3.64]]), </span>
+<span class="sd">                        b=ivy.array([[4.96, 1.52, -10.67],  </span>
+<span class="sd">                                     [4.36, 13.96, 0.3]]))</span>
+<span class="sd">    &gt;&gt; reduced = ivy.einops_reduce(x, &#39;a b -&gt; a&#39;, &#39;mean&#39;)</span>
+<span class="sd">    &gt;&gt; print(reduced)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([-2.29, 10.5]),</span>
+<span class="sd">        b: ivy.array([-1.4, 6.21])</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">einops</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">reduction</span><span class="p">,</span> <span class="o">**</span><span class="n">axes_lengths</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ivy</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
